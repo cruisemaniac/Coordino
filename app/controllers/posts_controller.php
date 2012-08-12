@@ -52,10 +52,10 @@ class PostsController extends AppController {
 			
 			/**
 			 * reCAPTCHA Check
-			 */
+
 				$this->data['reCAPTCHA'] = $this->params['form'];
 				$this->__validatePost($this->data, '/questions/ask', true);
-			
+			*/
 				/**
 				 * If the user is not logged in create an account for them.
 				 */
@@ -83,9 +83,10 @@ class PostsController extends AppController {
 		$question = $this->Post->findByPublicKey($public_key);
 		
 		if(!empty($this->data)) {
+			/*
 				$this->data['reCAPTCHA'] = $this->params['form'];
 				$this->__validatePost($this->data, '/questions/' . $question['Post']['public_key'] . '/' . $question['Post']['url_title'] . '#user_answer', true);
-				
+			*/	
 				if(!empty($this->data['User'])) {
 					$user = $this->__userSave(array('User' => $this->data['User']));
 					$this->Auth->login($user);

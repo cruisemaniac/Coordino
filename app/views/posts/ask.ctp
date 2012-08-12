@@ -105,13 +105,12 @@
 		'class' => 'big_input medium_input',
 		'value' => $session->read('errors.data.User.email')
 		));
-	?><br/>		
+	?><br/><br/>
+	<?$recaptcha->display_form('echo');?>
 <? } ?>
 <br/><br/>
 <?=$form->checkbox('Post.notify', array('checked' => true));?>
 <span style="margin-left: 5px;">Notify me when my question is answered.</span>
-
-<?$recaptcha->display_form('echo');?>
 
 <?=$form->end('Ask Your Question');?>
 

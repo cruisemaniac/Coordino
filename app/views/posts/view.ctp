@@ -303,10 +303,11 @@
 		<?=$form->label('name');?><br/>
 		<?=$form->text('User.username', array('class' => 'big_input medium_input '));?><br/>
 		<?=$form->label('email');?><br/>
-		<?=$form->text('User.email', array('class' => 'big_input medium_input '));?><br/>		
+		<?=$form->text('User.email', array('class' => 'big_input medium_input '));?><br/><br/>		
+		<?$recaptcha->display_form('echo');?>
 	<? } ?>
 	
-	<?$recaptcha->display_form('echo');?>
+
 	
 	<br/>
 	<?=$form->end(__d('verb','Answer',true));?>
