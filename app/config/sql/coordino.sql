@@ -245,6 +245,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `comment_count` int(12) NOT NULL,
   `question_count` int(12) NOT NULL,
   `image` varchar(255) NOT NULL,
+  `usertype` enum('f','o','b') NOT NULL DEFAULT 'f',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
