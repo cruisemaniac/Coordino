@@ -527,3 +527,17 @@ font.error_text {
 #coordino_logo {
 	margin-top: 10px;
 }
+
+div.detailed_inputs fieldset {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+div.detailed_inputs fieldset input {
+	width: auto;
+
+}
+
+div.detailed_inputs fieldset label {
+	margin-left: 3px;
+	margin-right: 20px;
+}

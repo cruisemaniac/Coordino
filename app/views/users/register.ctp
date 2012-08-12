@@ -26,8 +26,14 @@
 	<?=$form->input('username', array('class' => 'large_input'));?>
 
 	<?=$form->input('email', array('class' => 'large_input'));?>
-
+	
 	<?=$form->input('secret', array('type' => 'password', 'label' => 'Password', 'class' => 'large_input'));?> 
+	
+	<?php $radioOpt = array('f' => 'Freelancer', 'o' => 'Outsourcer', 'b' => 'Both Freelancer & Outsourcer');
+	$radattr = array('legend' => 'What kind of Work do you do?', 'default' => 'f');?>
+	<?=$form->radio('usertype', $radioOpt, $radattr);?>
+
+	
 	<?$recaptcha->display_form('echo');?>
 	<?=$form->end('Register');?>
 	</div>

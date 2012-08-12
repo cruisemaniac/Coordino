@@ -82,6 +82,24 @@ $('#tabs ul li a').click(function(){ //When any link is clicked
 				<td>reputation</td>
 				<td><?=$user['User']['reputation'];?></td>
 			</tr>
+			<tr>
+				<td>nature of work</td>
+				<td><?php 
+						switch($user['User']['usertype'])
+						{
+						 	case 'f':
+								echo "Freelancer";
+								break;
+							case 'o':
+								echo "Outsourcing Work";
+								break;
+							case 'b':
+								echo "Both Freelancing and Outsourcing Work";
+								break;
+						}
+					 ?>
+				</td>
+			</tr>
 		</table>
 		
 	</div>

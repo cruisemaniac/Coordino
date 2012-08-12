@@ -214,8 +214,8 @@ class UsersController extends AppController {
 				$user = $this->User->read(null, $this->Auth->user('id'));
 				$user['User']['password'] = $this->Auth->password($this->data['User']['secret']);
 				$user['User']['registered'] = '1';
-				$user['User']['image'] = md5(strtolower(trim($this->data['User']['email'])));
-				
+				$user['User']['image'] = md5(strtolower(trim($user['User']['email'])));
+				$user['User']['usertype'] = 'f';
 				/**
 				 * Save the user information.
 				 */

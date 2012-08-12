@@ -30,6 +30,17 @@
 		<textarea name="data[User][info]"><?=$user_info['User']['info'];?></textarea>
 	</div>
 	<div>
+		<h3>Nature of Work <span class="small">Tell us a bit of the kind of work you do.</span></h3>
+		<fieldset>
+			<input type="radio" name="data[User][usertype]" id="UserUsertypeF" value="f" <?= $user_info['User']['usertype']=='f' ? "checked=\"checked\"" : "" ?>>
+			<label for="UserUsertypeF">Freelancer</label>
+			<input type="radio" name="data[User][usertype]" id="UserUsertypeO" value="o" <?= $user_info['User']['usertype']=='o' ? "checked=\"checked\"" : "" ?>>
+			<label for="UserUsertypeO">Outsourcer</label>
+			<input type="radio" name="data[User][usertype]" id="UserUsertypeB" value="b" <?= $user_info['User']['usertype']=='b' ? "checked=\"checked\"" : "" ?>>
+			<label for="UserUsertypeB">Both Freelancing &amp; Outsourcing</label>
+		</fieldset>
+	</div>
+	<div>
 		<h3>Password Change <span class="small">Set a new password. Leave blank if you do not wish to change your password.</span></h3>
 		<input type="password" name="data[User][new_password]"/>
 	</div>
