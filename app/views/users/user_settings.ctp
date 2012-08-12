@@ -1,26 +1,11 @@
 <div>
 		<h3><?php __('Profile Image'); ?></h3>
-		<?=$thumbnail->show(array(
-						        'save_path' => WWW_ROOT . 'img/thumbs',
-						        'display_path' => $this->webroot.  'img/thumbs',
-						        'error_image_path' => $this->webroot. 'img/answerAvatar.png',
-						        'src' => WWW_ROOT .  $user_info['User']['image'],
-						        'w' => 75,
-								'h' => 75,
-								'q' => 100,
-		                        'alt' => $user_info['User']['username'] . 'picture' )
-			);
-		?>
-	<?=$trickyFileInput->draw('picker', array(
-								'form' => array(
-									'id' => 'User' . $user_info['User']['public_key'] . 'ImageChangeForm',
-									'name' => 'User' . $user_info['User']['public_key'] . 'ImageChangeForm',
-									'action' => $this->webroot.'users/' . $user_info['User']['public_key'] . '/upload'),
-								'input' => array(
-									'name' => 'data[Upload][file]',
-									'submitOnChange' => true),
-								'image' => $this->webroot.'img/buttons/choose_image.gif'));
-	?>
+
+
+
+		<img src="<?=$gravatar->urlFromhash($user_info['User']['image'], array('size' => 75, 'default' => 'mm'));?>" width="75" height="75" alt="<?=$user_info['User']['username'];?>" />
+		
+	
 	</div>
 <form action="?" method="post" >
 <div class="detailed_inputs">

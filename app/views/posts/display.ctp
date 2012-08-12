@@ -25,17 +25,9 @@ foreach($questions as $question) { ?>
 		<div class="wrapper">
 			<div style="float: right;">
 				<div class="thumb_with_border">
-		
-				<?php echo $html->link( $thumbnail->get(array(
-						        'save_path' => WWW_ROOT . 'img/thumbs',
-						        'display_path' => $this->webroot.  'img/thumbs',
-						        'error_image_path' => $this->webroot. 'img/answerAvatar.png',
-						        'src' => WWW_ROOT .  $question['User']['image'],
-						        'w' => 25,
-								'h' => 25,
-								'q' => 100,
-		                        'alt' => $question['User']['username'] . 'picture' )
-			),'/users/' .$question['User']['public_key'].'/'.$question['User']['username'], array('escape' => false));?>
+
+					<?php echo $html->image($gravatar->urlFromhash($question['User']['image'], array('size' => 25, 'default' => 'mm')), array('width' => 25, 'height' => 25, 'alt' => $question['User']['username'], 'url' => '/users/' .$question['User']['public_key'].'/'.$question['User']['username'], 'escape' => false));
+					?>
 				</div>
 				<div style="float: left; line-height: .9;">
 					<div>

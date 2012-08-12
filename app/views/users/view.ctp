@@ -33,20 +33,7 @@ $('#tabs ul li a').click(function(){ //When any link is clicked
 </script>
 <div id="userAvatar">
 	<div id="image">
-		<? if(empty($user['User']['image'])) { ?>
-			<img src="/img/answerAvatar.png" />
-		<? }else { 
-echo $thumbnail->show(array(
-						        'save_path' => WWW_ROOT . 'img/thumbs',
-						        'display_path' => $this->webroot.  'img/thumbs',
-						        'error_image_path' => $this->webroot. 'img/answerAvatar.png',
-						        'src' => WWW_ROOT .  $user['User']['image'],
-						        'w' => 130,
-								'h' => 130,
-								'q' => 100,
-		                        'alt' => $user['User']['username'] . ' picture' )
-			);
-		} ?>
+		<img src="<?=$gravatar->urlFromhash($user['User']['image'], array('size' => 130, 'default' => 'mm'));?>" width="130" height="130" alt="<?=$user['User']['username'];?>" />
 	</div>
 </div>
 <div id="userInfo">

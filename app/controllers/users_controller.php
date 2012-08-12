@@ -4,8 +4,8 @@ class UsersController extends AppController {
 	var $name = 'Users';
 	var $uses = array('User', 'Post', 'History', 'Setting', 'Widget');
 	var $components = array('Auth', 'Session', 'Cookie', 'Email', 'Recaptcha');
-	var $helpers = array('Time', 'Html', 'Form', 'Javascript', 'Number', 'Thumbnail', 'TrickyFileInput', 'Session', 'Recaptcha');
-	
+	var $helpers = array('Time', 'Html', 'Form', 'Javascript', 'Number', 'Thumbnail', 'Gravatar', 'TrickyFileInput', 'Session', 'Recaptcha');
+
 	var $allowedTypes = array(
     	'image/jpeg',
     	'image/gif',
@@ -193,7 +193,8 @@ class UsersController extends AppController {
 	
 	public function register() {
 		$this->pageTitle = 'Register';
-		
+		App::import('Helper', 'Gravatar');
+		$this->gravatarhelper = new GravatarHelper(array('default'=>'retro', 'title'=>__('Avatar', true)));
 		if($this->Session->read('Auth.User.registered') == 1) {
 			$this->Session->setFlash('You are already registered.');
 			$this->redirect('/');
@@ -213,6 +214,7 @@ class UsersController extends AppController {
 				$user = $this->User->read(null, $this->Auth->user('id'));
 				$user['User']['password'] = $this->Auth->password($this->data['User']['secret']);
 				$user['User']['registered'] = '1';
+				$user['User']['image'] = md5(strtolower(trim($this->data['User']['email'])));
 				
 				/**
 				 * Save the user information.
@@ -237,6 +239,7 @@ class UsersController extends AppController {
 				$this->data['User']['public_key'] = uniqid();
 				$this->data['User']['joined'] = time();
 				$this->data['User']['url_title'] = $this->Post->niceUrl($this->data['User']['username']);
+				$this->data['User']['image'] = md5(strtolower(trim($this->data['User']['email'])));
 
 				if($this->User->save($this->data)) {
 					$this->Auth->login($this->data);
